@@ -1,8 +1,16 @@
-class Protobuf < Formula
+# Copied from https://github.com/Homebrew/homebrew-core/commit/31c065658bb43765ef50c6bca8c43565c69b83c4
+#
+# I've changed the class name to reflect the file name. It was originally Protobuf
+class ProtobufAT32 < Formula
   desc "Protocol buffers (Google's data interchange format)"
   homepage "https://github.com/google/protobuf/"
   url "https://github.com/google/protobuf/archive/v3.2.0.tar.gz"
-  sha256 "2a25c2b71c707c5552ec9afdfb22532a93a339e1ca5d38f163fe4107af08c54c"
+  # this was the original hash in the commit
+  # (https://github.com/Homebrew/homebrew-core/commit/fb8279c17314fb633d9d3546dfb5244f010279ea) but it seems like it
+  # is no longer valid as v3.2.0 at https://github.com/google/protobuf/releases?after=v3.3.0rc1 has a different hash.
+  # It's also odd that the commit above was made on 2017-01-28 but the release date of v3.2.0 was 2017-02-17.
+  # sha256 "2a25c2b71c707c5552ec9afdfb22532a93a339e1ca5d38f163fe4107af08c54c"
+  sha256 "a839d3f1519ff9d68ab908de5a0f269650ef1fc501c10f6eefd4cae51d29b86f"
   head "https://github.com/google/protobuf.git"
 
   bottle do
@@ -59,8 +67,6 @@ class Protobuf < Formula
     mirror "https://dl.bintray.com/homebrew/mirror/gmock-1.7.0.zip"
     sha256 "26fcbb5925b74ad5fc8c26b0495dfc96353f4d553492eb97e85a8a6d2f43095b"
   end
-
-  needs :cxx11
 
   def install
     # Don't build in debug mode. See:
